@@ -6,7 +6,7 @@
 	</head>
 	<body>
 		<div id="app">
-			<login_component @login="login()"></login_component>
+			<login_component @checklogin="login"></login_component>
 		</div>
 		<script src="https://cdn.bootcss.com/vue/2.5.21/vue.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js" type="text/javascript" charset="utf-8"></script>
@@ -17,8 +17,8 @@
 			var vue = new Vue({
 				el:'#app',
 				methods: {
-					login:function ($event) {
-						console.log($event);
+					login:function (res) {
+						console.log(res);
 					}
 				},
 				components:{
