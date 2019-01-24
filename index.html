@@ -15,14 +15,18 @@
 		<script src="components/login/login_component.js"></script>
 		<script>
 			var vue = new Vue({
-				el:'#app',
+				el: '#app',
 				methods: {
-					login:function (res) {
+					login: function(res) {
 						console.log(res);
+						alert(res.msg);
+						if (res.state == 1) {
+							console.log(res.user);
+						}
 					}
 				},
-				components:{
-					'login_component':login_component
+				components: {
+					'login_component': login_component
 				}
 			});
 		</script>

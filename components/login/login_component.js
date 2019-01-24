@@ -9,22 +9,24 @@ var login_component = (function(mod) {
 		},
 		methods: {
 			login: function() {
-				var result = {};
 				var _this = this;
 				this.$axios.post("login/checklogin", {
 					login_name: _this.username,
 					pwd: _this.userpwd
 				}).then(function(r) {
 					console.log(r.data.list);
-					result['msg'] = r.data.msg;
-					result['state'] = 1;
-					result['user'] = r.data.list[0];
+					_this.$emit('checklogin', {
+						msg:r.data.msg,
+						state:1,
+						user:r.data.list[0]
+					});
 				}, function(r) {
-					result['msg'] = r.data.msg;
-					result['state'] = 0;
-					result['user'] = null;
+					_this.$emit('checklogin', {
+						msg:r.data.msg,
+						state:0,
+						user:null
+					});
 				});
-				this.$emit('checklogin', result);
 			}
 		},
 		template: `
